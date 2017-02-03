@@ -36,6 +36,13 @@ evens arr =
 		then 1 + evens (unsafePartial tail arr)
 		else evens (unsafePartial tail arr)
 
+evens' :: Array Int -> Int
+evens' arr = length $ do
+	x <- arr
+	guard $ isEven x
+	pure x
+
+
 
 square :: Array Int -> Array Int
 square = map (\n -> n * n)
